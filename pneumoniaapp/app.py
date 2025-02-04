@@ -2,8 +2,16 @@ import streamlit as st
 import numpy as np
 import tensorflow as tf
 from PIL import Image
+import gdown
 
-# Load the trained model
+# Correct Google Drive direct download link
+file_id = "1DVuhFsuPN183xAzouIqkPCVkD42WzSNZ"
+model_url = f"https://drive.google.com/uc?id={file_id}"
+
+# Download the model
+gdown.download(model_url, "pneumonia_model.h5", quiet=False)
+
+# Load the model
 model = tf.keras.models.load_model("pneumonia_model.h5")
 
 # App title and description
